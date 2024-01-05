@@ -29,10 +29,13 @@ go get github.com/ivnku/gobag
     * [GroupBy](#GroupBy)
     * [Map](#Map)
     * [Reduce](#Reduce)
+    * [In](#In)
 * [Maps](#Collections)
     * [GetKeys](#GetKeys)
     * [GetValues](#GetValues)
     * [Reform](#Reform)
+* [Types](#Types)
+  * [Set](#Set)
 
 ### Collections
 
@@ -73,6 +76,14 @@ Accumulates the data from a collection of the type `[]A` with the function `fn f
 Reduce[A any, B any](in []A, acc B, fn func (acc B, item A) B) B
 ```
 
+#### In
+
+Indicates whether the element is in the provided collection or not
+
+```go
+In[A comparable](in []A, elem A) bool
+```
+
 ### Maps
 
 #### GetKeys
@@ -101,6 +112,27 @@ Reform[K1 comparable, K2 comparable, V1 any, V2 any](
     keyFn func(K1) K2,
     valFn func(V1) V2,
 ) map[K2]V2
+```
+
+### Types
+
+#### Set
+
+Represents the set of unique values with O(1) access
+
+```go
+type Set[A comparable] struct {
+    storage map[A]struct{}
+}
+
+type SetInterface[A comparable] interface {
+    Add(val A) SetInterface[A]
+    IsExists(val A) bool
+    Remove(val A) SetInterface[A]
+    AddMultiple(values []A) SetInterface[A]
+    Len() int
+    ToSlice() []A
+}
 ```
 
 ## License
