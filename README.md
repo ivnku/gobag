@@ -1,12 +1,8 @@
-<div style="text-align: center;">
-
-![gopher](gobag.png#center)
-
-</div>
-
-<p style="text-align: center; font-size: 40px; font-weight: bold;">
-    GoBag
+<p align="center">
+    <img src="gobag.png" alt="GoBag logo">
 </p>
+
+<h1 align="center">GoBag</h1>
 
 The GoBag library is a set of helpers and types which is basically just a bunch of syntax sugar for Golang.
 
